@@ -8,7 +8,7 @@
             输入你要的城市
         </div>
         <div class="header-right">
-            城市
+            上海
             <span class="iconfont arrow-icon">&#xe64a;</span>
         </div>
     </div>
@@ -51,5 +51,4 @@ export default {
         .arrow-icon
             font-size: .24rem
             margin-left: -.04rem
-
 </script>

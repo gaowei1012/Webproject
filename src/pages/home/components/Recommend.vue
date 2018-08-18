@@ -17,45 +17,48 @@
 <script>
 export default {
   name: "HomeRecommend",
+  props: {
+    recommendList: Array
+  },
   data() {
     return {
-      recommendList: [
-        {
-          id: "001",
-          imgUrl:
-            "http://img1.qunarzz.com/sight/p0/1505/a1/a1950d296c2d10ca.water.jpg_200x200_86b5ff02.jpg",
-          title: "碧海金沙水上乐园",
-          desc: "描述"
-        },
-        {
-          id: "002",
-          imgUrl:
-            "http://img1.qunarzz.com/sight/p0/1505/a1/a1950d296c2d10ca.water.jpg_200x200_86b5ff02.jpg",
-          title: "碧海金沙水上乐园",
-          desc: "描述"
-        },
-        {
-          id: "003",
-          imgUrl:
-            "http://img1.qunarzz.com/sight/p0/1505/a1/a1950d296c2d10ca.water.jpg_200x200_86b5ff02.jpg",
-          title: "碧海金沙水上乐园",
-          desc: "描述"
-        },
-        {
-          id: "004",
-          imgUrl:
-            "http://img1.qunarzz.com/sight/p0/1505/a1/a1950d296c2d10ca.water.jpg_200x200_86b5ff02.jpg",
-          title: "碧海金沙水上乐园",
-          desc: "描述"
-        },
-        {
-          id: "005",
-          imgUrl:
-            "http://img1.qunarzz.com/sight/p0/1505/a1/a1950d296c2d10ca.water.jpg_200x200_86b5ff02.jpg",
-          title: "碧海金沙水上乐园",
-          desc: "描述"
-        }
-      ]
+      // recommendList: [
+      //   {
+      //     id: "001",
+      //     imgUrl:
+      //       "http://img1.qunarzz.com/sight/p0/1505/a1/a1950d296c2d10ca.water.jpg_200x200_86b5ff02.jpg",
+      //     title: "碧海金沙水上乐园",
+      //     desc: "描述"
+      //   },
+      //   {
+      //     id: "002",
+      //     imgUrl:
+      //       "http://img1.qunarzz.com/sight/p0/1505/a1/a1950d296c2d10ca.water.jpg_200x200_86b5ff02.jpg",
+      //     title: "碧海金沙水上乐园",
+      //     desc: "描述"
+      //   },
+      //   {
+      //     id: "003",
+      //     imgUrl:
+      //       "http://img1.qunarzz.com/sight/p0/1505/a1/a1950d296c2d10ca.water.jpg_200x200_86b5ff02.jpg",
+      //     title: "碧海金沙水上乐园",
+      //     desc: "描述"
+      //   },
+      //   {
+      //     id: "004",
+      //     imgUrl:
+      //       "http://img1.qunarzz.com/sight/p0/1505/a1/a1950d296c2d10ca.water.jpg_200x200_86b5ff02.jpg",
+      //     title: "碧海金沙水上乐园",
+      //     desc: "描述"
+      //   },
+      //   {
+      //     id: "005",
+      //     imgUrl:
+      //       "http://img1.qunarzz.com/sight/p0/1505/a1/a1950d296c2d10ca.water.jpg_200x200_86b5ff02.jpg",
+      //     title: "碧海金沙水上乐园",
+      //     desc: "描述"
+      //   }
+      // ]
     };
   }
 };
@@ -66,10 +69,10 @@ export default {
 
 .wapper {
     .recommend-title {
-        margin-top: 0.2rem;
         line-height: 0.8rem;
-        text-align: center;
-        background: #eee;
+        text-align: left
+        background: #eee
+        padding-left: 0.2rem
     }
 
     .item {
