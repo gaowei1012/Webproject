@@ -14,89 +14,23 @@
             <div class="area">
                 <div class="title border-topbottom">热门城市</div>
                 <div class="button-list">
-                    <div class="button-wapper">
+                    <div class="button-wapper" 
+                        v-for="item of hot" 
+                        :key="item.id">
                         <div class="button">
-                            北京
-                        </div>
-                    </div>
-                    <div class="button-wapper">
-                        <div class="button">
-                            北京
-                        </div>
-                    </div>
-                    <div class="button-wapper">
-                        <div class="button">
-                            北京
-                        </div>
-                    </div>
-                    <div class="button-wapper">
-                        <div class="button">
-                            北京
-                        </div>
-                    </div>
-                    <div class="button-wapper">
-                        <div class="button">
-                            北京
-                        </div>
-                    </div>
-                    <div class="button-wapper">
-                        <div class="button">
-                            北京
-                        </div>
-                    </div>
-                    <div class="button-wapper">
-                        <div class="button">
-                            北京
+                            {{item.name}}
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="area">
-                <div class="title border-topbottom">A</div>
-                <div class="item-list">
-                    <div class="item">西安</div>
-                    <div class="item">西安</div>
-                    <div class="item">西安</div>
-                    <div class="item">西安</div>
-                    <div class="item">西安</div>
-                    <div class="item">西安</div>
-                    <div class="item">西安</div>
-                </div>
-            </div>
-            <div class="area">
-                <div class="title border-topbottom">A</div>
-                <div class="item-list">
-                    <div class="item">西安</div>
-                    <div class="item">西安</div>
-                    <div class="item">西安</div>
-                    <div class="item">西安</div>
-                    <div class="item">西安</div>
-                    <div class="item">西安</div>
-                    <div class="item">西安</div>
-                </div>
-            </div>
-            <div class="area">
-                <div class="title border-topbottom">A</div>
-                <div class="item-list">
-                    <div class="item">西安</div>
-                    <div class="item">西安</div>
-                    <div class="item">西安</div>
-                    <div class="item">西安</div>
-                    <div class="item">西安</div>
-                    <div class="item">西安</div>
-                    <div class="item">西安</div>
-                </div>
-            </div>
-            <div class="area">
-                <div class="title border-topbottom">A</div>
-                <div class="item-list">
-                    <div class="item">西安</div>
-                    <div class="item">西安</div>
-                    <div class="item">西安</div>
-                    <div class="item">西安</div>
-                    <div class="item">西安</div>
-                    <div class="item">西安</div>
-                    <div class="item">西安</div>
+            <div class="area" 
+                v-for="(item, key) of cities"
+                :key="key">
+                <div class="title border-topbottom">{{key}}</div>
+                <div class="item-list" 
+                    v-for="innerItem of item"
+                    :key="innerItem.id">
+                    <div class="item">{{innerItem.name}}</div>
                 </div>
             </div>
         </div>
@@ -107,6 +41,10 @@
 import BScroll from 'better-scroll'
 export default {
     name: 'CityList',
+    props: {
+        cities: Object,
+        hot: Array
+    },
     mounted () {
         this.scroll = new BScroll(this.$refs.wapper) // 页面滚动效果
     }
