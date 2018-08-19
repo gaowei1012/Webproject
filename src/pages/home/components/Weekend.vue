@@ -2,7 +2,12 @@
     <div class="wapper">
         <div class='recommend-title'>周末去哪</div>
         <ul>
-            <li class="item" v-for="item of weekendList" :key="item.id">
+            <router-link
+                tag="li"
+                class="item" v-for="item of weekendList" 
+                :key="item.id"
+                :to="'/detail/' + item.id"
+            >
                 <div class="item-img-wapper">
                     <img class="img-content" :src="item.imgUrl" alt="">
                 </div>
@@ -10,7 +15,7 @@
                     <p class="item-title">{{item.title}}</p>
                     <p class="item-desc">{{item.desc}}</p>
                 </div>
-            </li>
+            </router-link>
         </ul>
     </div> 
 </template>
