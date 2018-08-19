@@ -12,6 +12,7 @@
                     class="search-item" 
                     v-for="item of list" 
                     :key="item.id"
+                    @click="handleCityClick(item.name)"
                 >
                     {{item.name}}
                 </li>
@@ -37,13 +38,16 @@ export default {
             timer: null
         }
     },
+    methods: {
+        handleCityClick (city) {
+            this.$store.dispatch('changeCity', city)
+            this.$router.push('/') // 跳转到首页
+        }
+    },
     computed: {
         hasNotData () {
             return !this.list.length
         }
-    },
-    mounted () {
-        this.scroll = new BScroll(this.$refs.search)
     },
     watch: {
         keyword () {
@@ -69,6 +73,9 @@ export default {
                 this.list = result
             }, 100)
         }
+    },
+    mounted () {
+        this.scroll = new BScroll(this.$refs.search)
     }
 }
 </script>

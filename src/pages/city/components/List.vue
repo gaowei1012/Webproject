@@ -6,7 +6,7 @@
                 <div class="button-list">
                     <div class="button-wapper">
                         <div class="button">
-                            北京
+                            {{this.$store.state.city}}
                         </div>
                     </div>
                 </div>
@@ -16,7 +16,9 @@
                 <div class="button-list">
                     <div class="button-wapper" 
                         v-for="item of hot" 
-                        :key="item.id">
+                        :key="item.id"
+                        @click="handleCityClick(item.name)"    
+                    >
                         <div class="button">
                             {{item.name}}
                         </div>
@@ -32,7 +34,9 @@
                 <div class="title border-topbottom">{{key}}</div>
                 <div class="item-list" 
                     v-for="innerItem of item"
-                    :key="innerItem.id">
+                    :key="innerItem.id"
+                    @click="handleCityClick(innerItem.name)"
+                >
                     <div class="item">{{innerItem.name}}</div>
                 </div>
             </div>
@@ -49,8 +53,11 @@ export default {
         hot: Array,
         letter: String
     },
-    mounted () {
-        this.scroll = new BScroll(this.$refs.wapper) // 页面滚动效果
+    methods: {
+        handleCityClick (city) {
+            this.$store.dispatch('changeCity', city)
+            this.$router.push('/') // 跳转到首页
+        }
     },
     watch: {
         letter () {
@@ -60,6 +67,9 @@ export default {
                 this.scroll.scrollToElement(element)
             }
         }
+    },
+    mounted () {
+        this.scroll = new BScroll(this.$refs.wapper) // 页面滚动效果
     }
 }
 </script>

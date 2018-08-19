@@ -9,7 +9,7 @@
         </div>
         <router-link to='/city'>
             <div class="header-right">
-                上海
+                {{this.$store.state.city}}
                 <span class="iconfont arrow-icon">&#xe64a;</span>
             </div>
         </router-link>
@@ -23,7 +23,8 @@ export default {
 </script>
 
 <script lang="stylus" scoped>
-@import '../../../assets/styles/varibles.styl';
+@import './../../../assets/styles/mixins.styl'
+@import '../../../assets/styles/varibles.styl'
     .header
         display:flex
         line-height: .86rem
@@ -51,6 +52,7 @@ export default {
         float: right 
         text-align: center
         color: #fff
+        ellipsis()
         .arrow-icon
             font-size: .24rem
             margin-left: -.04rem

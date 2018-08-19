@@ -26,7 +26,6 @@ export default {
     },
     data () {
         return {
-            // city: '上海',
             swiperList: [],
             iconList: [],
             recommendList: [],
@@ -43,7 +42,6 @@ export default {
             res = res.data;
             if (res.ret && res.data) {
                 console.log(res.data.city)
-                // this.city = res.data.city
                 this.swiperList = res.data.swiperList
                 this.recommendList = res.data.recommendList
                 this.weekendList = res.data.weekendList
