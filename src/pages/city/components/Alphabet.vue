@@ -31,8 +31,14 @@ export default {
     },
     data () {
         return {
-            touchStatus: false
+            touchStatus: false,
+            startY: 0,
+            timer: 0
         }
+    },
+    updated () {
+        // 距离输入框下部底部的高度,对于性能优化有好处
+        this.startY = this.$refs['A'][0].offsetTop 
     },
     methods: {
         handleLetterClick: function (e) {
@@ -43,12 +49,17 @@ export default {
         },
         handleTouchMove (e) {
             if (this.touchStatus) {
-                const startY = this.$refs['A'][0].offsetTop // 距离输入框下部底部的高度
-                const touchY = e.touches[0].clientY -79 // 字母距离输入框底部的高度
-                const index = Math.floor((touchY - startY) / 20) // 每个字母的高
-                if (index >= 0 && index < this.letters.length) {
-                    this.$emit('change', this.letters[index])
+                // 函数节流
+                if (this.timer) {
+                    clearTimeout(this.timer)
                 }
+                this.timer = setTimeout(() => {
+                    const touchY = e.touches[0].clientY -79 // 字母距离输入框底部的高度
+                    const index = Math.floor((touchY - this.startY) / 20) // 每个字母的高
+                    if (index >= 0 && index < this.letters.length) {
+                        this.$emit('change', this.letters[index])
+                    }
+                }, 16)
             }
         },
         handleTouchEnd () {
