@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="banner">
+        <div class="banner" @click="handleClickGallary">
             <img class="banner-img" src="http://img1.qunarzz.com/sight/p0/1609/80/8092254b7f5f016ea3.water.jpg_600x330_45017f19.jpg" alt="">
             <div class="banner-info">
                 <div class="banner-title">大连与欧式讷河纱巾</div>
@@ -8,7 +8,11 @@
                 <span class="iconfont banner-icon">&#xe692;</span>7889</div>
             </div>
         </div>
-       <common-gallary></common-gallary>
+       <common-gallary 
+            :imgs='imgs'
+            v-show="showGallary"
+            @close='handleGallaryClose'
+        ></common-gallary>
     </div>
 </template>
 
@@ -19,6 +23,24 @@ export default {
     name: 'Banner',
     components: {
         CommonGallary
+    },
+    data () {
+        return {
+            imgs: [
+                'https://imgs.qunarzz.com/piao/fusion/1801/67/22e3d30fd0e29f02.jpg',
+                'https://imgs.qunarzz.com/piao/fusion/1801/d8/78e5faab6122c902.jpg'
+            ],
+            showGallary: false
+        }
+    },
+    methods: {
+        handleClickGallary () {
+            this.showGallary = true
+        },
+        handleGallaryClose () {
+            this.showGallary = false
+        }
+
     }
 }
 </script>

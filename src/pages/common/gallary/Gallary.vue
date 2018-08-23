@@ -1,15 +1,14 @@
 <template>
-    <div class="container">
-        <div class="wapper">
-            <swiper>
-                <swiper-slide :options="gallaryOption">
-                    <img class="gallary-img" src="http://img1.qunarzz.com/sight/p0/1609/80/8092254b7f5f016ea3.water.jpg_600x330_45017f19.jpg">
-                </swiper-slide>
-                <swiper-slide >
-                    <img class="gallary-img" src="http://img1.qunarzz.com/sight/p0/1803/1a/1aac2b1dd96b36ba3.water.jpg_r_800x800_545e2646.jpg">
-                </swiper-slide>
-                <swiper-slide >
-                    <img class="gallary-img" src="http://img1.qunarzz.com/sight/p0/1803/b0/b0e8dff00c973855a3.water.jpg_r_800x800_ac9662e5.jpg">
+    <div class="container" @click="handleGallaryClose">
+        <div class="wrapper">
+            <swiper :options="SwiperOption">
+                <swiper-slide 
+                    v-for="(item, index) in imgs" 
+                    :key="index"
+                >
+                    <img class="gallary-img" 
+                        :src="item"
+                    >
                 </swiper-slide>
                 <div class="swiper-pagination" slot="pagination"></div>
             </swiper>
@@ -20,12 +19,28 @@
 <script>
 export default {
     name: 'CommonGallary',
+    props: {
+        imgs: {
+            type: Array,
+            default () {
+                return [ ]
+            }
+        }
+    },
     data () {
         return {
-            gallaryOption: {
+            SwiperOption: {
                 pagination: '.swiper-pagination',
-                paginationType: 'fraction'
+                paginationType: 'fraction',
+                autoplay: false, // 关闭自动切换
+                observeParents: true, // 检测父级元素DOM结构是否发生变化
+                observer: true
             }
+        }
+    },
+    methods: {
+        handleGallaryClose () {
+            this.$emit('close') // 触发事件给上级
         }
     }
 }
@@ -33,6 +48,8 @@ export default {
 
 
 <style lang="stylus" scoped>
+    .container >>> .swiper-pagination
+        overflow: inherit
     .container
         display: flex
         flex-direction: column
@@ -44,13 +61,16 @@ export default {
         top: 0
         bottom: 0
         background: #000
-        .wapper
-            overflow: hidden
+        .wrapper
+            // overflow: hidden
             height: 0
             width: 100%
-            padding-bottom: 75%
+            padding-bottom: 100%
             .gallary-img
                 width: 100%
         .swiper-pagination
-               color: #fff   
+            height: .2rem
+            width: 100%
+            color: #fff!important 
+            bottom: -1rem
 </style>
