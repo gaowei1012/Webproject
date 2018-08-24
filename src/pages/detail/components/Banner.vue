@@ -1,15 +1,17 @@
 <template>
     <div>
         <div class="banner" @click="handleClickGallary">
-            <img class="banner-img" src="http://img1.qunarzz.com/sight/p0/1609/80/8092254b7f5f016ea3.water.jpg_600x330_45017f19.jpg" alt="">
+            <img class="banner-img" :src="bannerImg" alt="">
             <div class="banner-info">
-                <div class="banner-title">大连与欧式讷河纱巾</div>
+                <div class="banner-title">{{sightName}}</div>
                 <div class="banner-number">
-                <span class="iconfont banner-icon">&#xe692;</span>7889</div>
+                <span class="iconfont banner-icon">&#xe692;</span>
+                    {{this.bannerImg.length}}
+                </div>
             </div>
         </div>
        <common-gallary 
-            :imgs='imgs'
+            :imgs='gallaryImgs'
             v-show="showGallary"
             @close='handleGallaryClose'
         ></common-gallary>
@@ -21,6 +23,11 @@
 import CommonGallary from './../../common/gallary/Gallary'
 export default {
     name: 'Banner',
+    props: {
+        sightName: String,
+        bannerImg: String,
+        gallaryImgs: Array
+    },
     components: {
         CommonGallary
     },
