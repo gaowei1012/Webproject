@@ -33,6 +33,7 @@ export default {
       }
   },
   methods: {
+        // 顶部动画效果
       handleScroll () {
           // 滑动距离顶部的距离
           const top = document.documentElement.scrollTop
@@ -40,7 +41,7 @@ export default {
           if (top > 60) {
               let opacity = top / 140
               opacity = opacity > 1 ? 1 : opacity // opacity
-              this.opacityStyle = {
+              this.opacityStyle = { 
                   opacity
               }
               this.showAbs = false
