@@ -51,7 +51,13 @@ export default {
       }
   },
   activated () {
+    // 监听全局的scroll事件
     window.addEventListener('scroll', this.handleScroll)
+  },
+  deactivated () {
+    // 性能优化
+    // 解绑window全局事件  
+    window.removeEventListener('scroll', this.handleScroll)
   }
 };
 </script>
