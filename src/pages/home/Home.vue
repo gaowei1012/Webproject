@@ -19,7 +19,7 @@ import { mapState } from 'vuex'
 export default {
     name: 'Home',
     components: {
-        HomeHeader: () => import('./components/Header'),
+        HomeHeader: () => import('./components/Header'), // 异步组件
         HomeSwiper,
         HomeIcons,
         HomeRecommend,
